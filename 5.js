@@ -15,9 +15,10 @@ class ComputerUse extends TableTechnology {
     constructor(name, weight) {
         super();
         this.name = name
+        this.weight = weight;
         this.typeUse = 'Вычислительный прибор'
         this.getWeight = function () {
-            console.log('Вес ноутбука составляет ' + weight + ' кг')
+            console.log('Вес ноутбука составляет ' + this.weight + ' кг')
         }
     }
 
@@ -27,9 +28,10 @@ class LightUse extends TableTechnology {
     constructor(name, weight) {
         super();
         this.name = name
+        this.weight = weight;
         this.typeUse = 'Осветительный прибор'
         this.getWeight = function () {
-            console.log('Вес лампы составляет ' + weight + ' г')
+            console.log('Вес лампы составляет ' + this.weight + ' г')
         }
     }
 }
@@ -45,3 +47,5 @@ laptop.energy(1, 4800)
 console.log(lamp)
 lamp.getWeight()
 lamp.energy(0, 40)
+
+// Здесь сохранились те же проблемы, что и в предыдущем задании, но есть и пару других: в констуркторах ComputerUse и LightUse в качестве аргумента передаётся свойство weight, но оно не записывается в объект. В методах getWeight при выводе значения используется не свойство объекта weight, а аргумент weight, переданный в конструктор. Это не корректное поведение и в перспективе может привести к ошибкам.
